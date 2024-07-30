@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect to App Store</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Download Our App">
+    <meta property="og:description" content="Get our app from the App Store or Google Play Store.">
+    <meta property="og:image" content="https://example.com/path/to/your/image.jpg">
+    <meta property="og:url" content="https://yourusername.github.io/app-redirect/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Download Our App">
+    <meta name="twitter:description" content="Get our app from the App Store or Google Play Store.">
+    <meta name="twitter:image" content="https://example.com/path/to/your/image.jpg">
+    
+    <script>
+		const PLAY_STORE_LINK = "https://play.google.com/store/apps/details?id=com.coastcitygames.flags";
+        document.addEventListener('DOMContentLoaded', function () {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if (/android/i.test(userAgent)) {
+                // Redirect to Google Play Store link for Android
+                window.location.href = PLAY_STORE_LINK;
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                // Redirect to Apple App Store link for iOS
+                window.location.href = 'https://apps.apple.com/us/app/example-iosapp/id123456789';
+            } else {
+                // Fallback for unsupported devices -> defaults to play store link
+                window.location.href = PLAY_STORE_LINK;
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Redirecting...</h1>
+</body>
+</html>
