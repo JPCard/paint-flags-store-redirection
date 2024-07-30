@@ -1,0 +1,1 @@
+# paint-flags-store-redirection
