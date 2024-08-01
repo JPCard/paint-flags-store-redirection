@@ -19,6 +19,9 @@
     
     <script>
 		const PLAY_STORE_LINK = "https://play.google.com/store/apps/details?id=com.coastcitygames.flags";
+		const DEFAULT_UTM_SOURCE = "direct_sharing";
+		const DEFAULT_UTM_MEDIUM = "share_link";
+		const DEFAULT_UTM_CAMPAING = "self_promotion";
 
 		function getQueryParams() {
 			let params = new URLSearchParams(window.location.search);
@@ -31,9 +34,12 @@
 
 		function buildPlayStoreLink(params) {
 			let url = new URL(PLAY_STORE_LINK);
-			if (params.utm_source) url.searchParams.set('utm_source', params.utm_source);
-			if (params.utm_medium) url.searchParams.set('utm_medium', params.utm_medium);
-			if (params.utm_campaign) url.searchParams.set('utm_campaign', params.utm_campaign);
+			let utm_source = params.utm_source? params.utm_source:DEFAULT_UTM_SOURCE;
+			let utm_medium = params.utm_medium? params.utm_medium:DEFAULT_UTM_MEDIUM;
+			let utm_campaign = params.utm_campaign? params.utm_campaign:DEFAULT_UTM_CAMPAING;
+			url.searchParams.set('utm_source', utm_source);
+			url.searchParams.set('utm_medium', utm_medium);
+			url.searchParams.set('utm_campaign', utm_campaign);
 			return url.toString();
 		}
 
