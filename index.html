@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Play Paint Flags!">
-    <meta property="og:description" content="Join me in the best country flag game.">
-    <meta property="og:image" content="https://raw.githubusercontent.com/jpcard/paint-flags-store-redirection/main/images/paint_flags_preview_banner.jpg">
-    <meta property="og:url" content="https://jpcard.github.io/paint-flags-store-redirection/">
-    <meta property="og:type" content="website">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Play Paint Flags!">
-    <meta name="twitter:description" content="Join me in the best country flag game.">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/jpcard/paint-flags-store-redirection/main/images/paint_flags_preview_banner.jpg">
-    
-    <script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Open Graph Meta Tags -->
+	<meta property="og:title" content="Play Paint Flags!">
+	<meta property="og:description" content="Join me in the best country flag game.">
+	<meta property="og:image"
+		content="https://raw.githubusercontent.com/jpcard/paint-flags-store-redirection/main/images/paint_flags_preview_banner.jpg">
+	<meta property="og:url" content="https://jpcard.github.io/paint-flags-store-redirection/">
+	<meta property="og:type" content="website">
+
+	<!-- Twitter Card Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Play Paint Flags!">
+	<meta name="twitter:description" content="Join me in the best country flag game.">
+	<meta name="twitter:image"
+		content="https://raw.githubusercontent.com/jpcard/paint-flags-store-redirection/main/images/paint_flags_preview_banner.jpg">
+
+	<script>
 		const PLAY_STORE_LINK = "https://play.google.com/store/apps/details?id=com.coastcitygames.flags";
 		const DEFAULT_UTM_SOURCE = "direct_sharing";
 		const DEFAULT_UTM_MEDIUM = "share_link";
@@ -34,9 +37,9 @@
 
 		function buildPlayStoreLink(params) {
 			let url = new URL(PLAY_STORE_LINK);
-			let utm_source = params.utm_source? params.utm_source:DEFAULT_UTM_SOURCE;
-			let utm_medium = params.utm_medium? params.utm_medium:DEFAULT_UTM_MEDIUM;
-			let utm_campaign = params.utm_campaign? params.utm_campaign:DEFAULT_UTM_CAMPAING;
+			let utm_source = params.utm_source ? params.utm_source : DEFAULT_UTM_SOURCE;
+			let utm_medium = params.utm_medium ? params.utm_medium : DEFAULT_UTM_MEDIUM;
+			let utm_campaign = params.utm_campaign ? params.utm_campaign : DEFAULT_UTM_CAMPAING;
 			url.searchParams.set('utm_source', utm_source);
 			url.searchParams.set('utm_medium', utm_medium);
 			url.searchParams.set('utm_campaign', utm_campaign);
@@ -59,8 +62,10 @@
 				window.location.href = playStoreLinkWithParams;
 			}
 		});
-    </script>
+	</script>
 </head>
+
 <body>
 </body>
+
 </html>
