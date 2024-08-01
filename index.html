@@ -19,20 +19,40 @@
     
     <script>
 		const PLAY_STORE_LINK = "https://play.google.com/store/apps/details?id=com.coastcitygames.flags";
-        document.addEventListener('DOMContentLoaded', function () {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            if (/android/i.test(userAgent)) {
-                // Redirect to Google Play Store link for Android
-                window.location.href = PLAY_STORE_LINK;
-            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                // Redirect to Apple App Store link for iOS -> form for joining Closed Beta
-                window.location.href = 'https://bit.ly/PaintFlags';
-            } else {
-                // Fallback for unsupported devices -> defaults to play store link
-                window.location.href = PLAY_STORE_LINK;
-            }
-        });
+		function getQueryParams() {
+			let params = new URLSearchParams(window.location.search);
+			return {
+				utm_source: params.get('utm_source'),
+				utm_medium: params.get('utm_medium'),
+				utm_campaign: params.get('utm_campaign')
+			};
+		}
+
+		function buildPlayStoreLink(params) {
+			let url = new URL(PLAY_STORE_LINK);
+			if (params.utm_source) url.searchParams.set('utm_source', params.utm_source);
+			if (params.utm_medium) url.searchParams.set('utm_medium', params.utm_medium);
+			if (params.utm_campaign) url.searchParams.set('utm_campaign', params.utm_campaign);
+			return url.toString();
+		}
+
+		document.addEventListener('DOMContentLoaded', function () {
+			var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+			var queryParams = getQueryParams();
+			var playStoreLinkWithParams = buildPlayStoreLink(queryParams);
+
+			if (/android/i.test(userAgent)) {
+				// Redirect to Google Play Store link for Android
+				window.location.href = playStoreLinkWithParams;
+			} else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+				// Redirect to Apple App Store link for iOS -> form for joining Closed Beta
+				window.location.href = 'https://bit.ly/PaintFlags';
+			} else {
+				// Fallback for unsupported devices -> defaults to play store link
+				window.location.href = playStoreLinkWithParams;
+			}
+		});
     </script>
 </head>
 <body>
